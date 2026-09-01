@@ -31,12 +31,15 @@ export function Hero() {
   return (
     <section id="top" className="relative isolate min-h-[92vh] overflow-hidden bg-surface">
       <div ref={bgRef} className="absolute inset-0 -z-20 overflow-hidden will-change-transform">
-        <img
-          src="/assets/c1.jpg"
-          alt="Dr. Anand Mohan treating a patient at Oro Dental Clinic in Bhagalpur"
-          className="animate-hero-reveal h-full w-full scale-[1.04] object-cover"
-        />
+        <div className="animate-hero-reveal h-full w-full">
+          <img
+            src="/assets/c1.jpg"
+            alt="Dr. Anand Mohan treating a patient at Oro Dental Clinic in Bhagalpur"
+            className="animate-kenburns h-full w-full object-cover"
+          />
+        </div>
       </div>
+
       <div
         className="absolute inset-0 -z-10 hidden md:block"
         style={{
