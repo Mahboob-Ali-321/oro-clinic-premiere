@@ -35,6 +35,7 @@ type RevealProps = {
   className?: string;
   as?: ElementType;
   variant?: "up" | "scale";
+  [key: string]: unknown;
 };
 
 export function Reveal({
@@ -43,6 +44,7 @@ export function Reveal({
   className = "",
   as,
   variant = "up",
+  ...rest
 }: RevealProps) {
   const Tag = (as ?? "div") as ElementType;
   const { ref, inView } = useInView<HTMLDivElement>();
@@ -52,6 +54,7 @@ export function Reveal({
       ref={ref}
       className={`${variant === "scale" ? "reveal-scale" : "reveal"} ${inView ? "is-revealed" : ""} ${className}`}
       style={{ transitionDelay: `${delay}ms` }}
+      {...rest}
     >
       {children}
     </Tag>

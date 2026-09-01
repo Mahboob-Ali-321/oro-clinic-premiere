@@ -217,7 +217,7 @@ export function Gallery() {
 
         <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
           {gallery.map((g, i) => (
-            <Reveal key={g.src} delay={i * 80} className="contents-reveal">
+            <Reveal key={g.src} delay={i * 80}>
               <button
                 type="button"
                 onClick={() => setActive(i)}
