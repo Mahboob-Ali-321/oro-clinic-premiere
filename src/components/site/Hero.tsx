@@ -1,14 +1,40 @@
+import { useEffect, useRef } from "react";
 import { ArrowRight, Phone } from "lucide-react";
 import { Navbar } from "./Navbar";
 
 export function Hero() {
+  const bgRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const el = bgRef.current;
+    if (!el) return;
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const desktop = window.matchMedia("(min-width: 1024px)").matches;
+    if (reduced || !desktop) return;
+
+    let frame = 0;
+    const onScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        const y = Math.min(window.scrollY, 700);
+        el.style.transform = `translate3d(0, ${y * 0.08}px, 0)`;
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (frame) cancelAnimationFrame(frame);
+    };
+  }, []);
+
   return (
     <section id="top" className="relative isolate min-h-[92vh] overflow-hidden bg-surface">
-      <div className="absolute inset-0 -z-20 overflow-hidden">
+      <div ref={bgRef} className="absolute inset-0 -z-20 overflow-hidden will-change-transform">
         <img
           src="/assets/c1.jpg"
           alt="Dr. Anand Mohan treating a patient at Oro Dental Clinic in Bhagalpur"
-          className="animate-kenburns h-full w-full object-cover"
+          className="animate-hero-reveal h-full w-full scale-[1.04] object-cover"
         />
       </div>
       <div
@@ -32,7 +58,7 @@ export function Hero() {
         <div className="max-w-[800px]">
           <span
             className="animate-rise inline-flex items-center gap-2 rounded-full bg-chip-bg px-4 py-2 text-[0.75rem] font-semibold uppercase tracking-[1px] text-chip-text"
-            style={{ animationDelay: "0s" }}
+            style={{ animationDelay: "0.25s" }}
           >
             <span className="h-1.5 w-1.5 rounded-full bg-brand" />
             Trusted Dental Care · Bhagalpur
@@ -40,7 +66,7 @@ export function Hero() {
 
           <h1
             className="animate-rise mt-6 text-[2.5rem] font-bold leading-[1.1] tracking-[-0.02em] text-ink md:text-[3.5rem] lg:text-[4.5rem]"
-            style={{ animationDelay: "0.1s" }}
+            style={{ animationDelay: "0.38s" }}
           >
             Healthy smiles.
             <br />
@@ -49,7 +75,7 @@ export function Hero() {
 
           <p
             className="animate-rise mt-6 max-w-xl text-[1.15rem] font-normal leading-[1.6] text-slate"
-            style={{ animationDelay: "0.2s" }}
+            style={{ animationDelay: "0.5s" }}
           >
             Oro Dental Clinic provides compassionate, high-quality dental care in Bhagalpur —
             trusted by over 1,000 patients with a perfect 5.0 rating.
@@ -57,7 +83,7 @@ export function Hero() {
 
           <div
             className="animate-rise mt-8 flex flex-col gap-3 sm:flex-row sm:items-center"
-            style={{ animationDelay: "0.3s" }}
+            style={{ animationDelay: "0.62s" }}
           >
             <a href="#contact" className="btn-pill btn-brand">
               Book Appointment
