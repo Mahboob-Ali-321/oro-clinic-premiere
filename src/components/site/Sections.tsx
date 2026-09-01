@@ -443,7 +443,7 @@ export function Contact() {
             delay={140}
             as="form"
             className="card-soft h-fit p-7"
-            onSubmit={(e) => {
+            onSubmit={(e: React.FormEvent) => {
               e.preventDefault();
               setSent(true);
             }}
