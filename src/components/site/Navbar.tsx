@@ -25,7 +25,7 @@ export function Navbar() {
 
   return (
     <header className="absolute inset-x-0 top-0 z-50">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-5 md:px-8">
+      <nav className="animate-rise mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-5 md:px-8" style={{ animationDelay: "0.05s" }}>
         <a href="#top" className="flex min-w-0 items-center gap-2.5">
           <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-light text-brand">
             <ToothIcon className="h-6 w-6" />
