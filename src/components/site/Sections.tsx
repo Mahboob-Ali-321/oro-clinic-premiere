@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Reveal } from "./Reveal";
 import {
   ArrowRight,
   Baby,
@@ -52,7 +53,7 @@ export function TrustBar() {
   return (
     <section className="border-y border-black/5 bg-white">
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-6 px-5 py-8 md:grid-cols-[auto_1fr] md:px-8">
-        <div className="flex min-w-0 items-center gap-4">
+        <Reveal delay={80} className="flex min-w-0 items-center gap-4">
           <GoogleG className="h-10 w-10 shrink-0" />
           <div className="min-w-0">
             <div className="flex flex-wrap items-center gap-2">
@@ -61,11 +62,11 @@ export function TrustBar() {
             </div>
             <p className="mt-1 text-sm text-slate">1,004 Google Reviews</p>
           </div>
-        </div>
-        <p className="text-sm leading-relaxed text-slate md:text-right">
+        </Reveal>
+        <Reveal delay={180} as="p" className="text-sm leading-relaxed text-slate md:text-right">
           A perfect rating from over a thousand patients across Bhagalpur — for painless treatment,
           clear explanations and honest advice.
-        </p>
+        </Reveal>
       </div>
     </section>
   );
@@ -75,7 +76,7 @@ export function About() {
   return (
     <section id="about" className="section-pad">
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 md:px-8 lg:grid-cols-2 lg:gap-16">
-        <div className="relative">
+        <Reveal variant="scale" className="relative">
           <img
             src="/assets/c3.jpg"
             alt="Dr. Anand Mohan examining a young patient"
@@ -86,11 +87,11 @@ export function About() {
             <Stars className="h-4 w-4" />
             <span className="text-sm font-semibold text-ink">1,004 five-star reviews</span>
           </div>
-        </div>
+        </Reveal>
         <div>
-          <span className="inline-flex items-center gap-2 rounded-full bg-chip-bg px-4 py-2 text-[0.75rem] font-semibold uppercase tracking-[1px] text-chip-text">
+          <Reveal as="span" className="inline-flex items-center gap-2 rounded-full bg-chip-bg px-4 py-2 text-[0.75rem] font-semibold uppercase tracking-[1px] text-chip-text">
             Meet the doctor
-          </span>
+          </Reveal>
           <h2 className="mt-5 text-3xl font-bold tracking-[-0.02em] text-ink md:text-[2.75rem] md:leading-[1.15]">
             Dr. Anand Mohan
           </h2>
@@ -105,14 +106,14 @@ export function About() {
             known for being genuinely painless, efficient and honest about what you actually need.
           </p>
           <div className="mt-8 grid grid-cols-2 gap-4 sm:max-w-md">
-            <div className="card-soft px-5 py-4">
+            <Reveal delay={120} className="card-soft px-5 py-4">
               <p className="text-2xl font-bold text-ink">1,000+</p>
               <p className="mt-1 text-sm text-slate">Happy patients</p>
-            </div>
-            <div className="card-soft px-5 py-4">
+            </Reveal>
+            <Reveal delay={240} className="card-soft px-5 py-4">
               <p className="text-2xl font-bold text-ink">5.0 ★</p>
               <p className="mt-1 text-sm text-slate">Google rating</p>
-            </div>
+            </Reveal>
           </div>
         </div>
       </div>
@@ -170,14 +171,19 @@ export function Services() {
         </div>
 
         <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((s) => (
-            <article key={s.title} className="card-soft card-lift p-7">
-              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-brand-light text-brand">
+          {services.map((s, i) => (
+            <Reveal
+              as="article"
+              key={s.title}
+              delay={i * 90}
+              className="card-soft card-lift p-7"
+            >
+              <span className="icon-anim grid h-12 w-12 place-items-center rounded-2xl bg-brand-light text-brand">
                 <s.icon className="h-6 w-6" />
               </span>
               <h3 className="mt-5 text-lg font-semibold text-ink">{s.title}</h3>
               <p className="mt-2 text-[0.95rem] leading-relaxed text-slate">{s.text}</p>
-            </article>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -211,19 +217,21 @@ export function Gallery() {
 
         <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
           {gallery.map((g, i) => (
-            <button
-              key={g.src}
-              type="button"
-              onClick={() => setActive(i)}
-              className="group aspect-4/3 overflow-hidden rounded-2xl bg-white"
-            >
-              <img
-                src={g.src}
-                alt={g.alt}
-                loading="lazy"
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-              />
-            </button>
+            <Reveal key={g.src} delay={i * 80} className="contents-reveal">
+              <button
+                type="button"
+                onClick={() => setActive(i)}
+                className="group relative block aspect-4/3 w-full overflow-hidden rounded-2xl bg-white"
+              >
+                <img
+                  src={g.src}
+                  alt={g.alt}
+                  loading="lazy"
+                  className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                />
+                <span className="pointer-events-none absolute inset-0 bg-ink/0 transition-colors duration-500 group-hover:bg-ink/10" />
+              </button>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -301,8 +309,13 @@ export function Testimonials() {
         </div>
 
         <div className="mt-12 grid gap-5 md:grid-cols-3">
-          {testimonials.map((t) => (
-            <figure key={t.name} className="card-soft card-lift flex h-full flex-col p-7">
+          {testimonials.map((t, i) => (
+            <Reveal
+              as="figure"
+              key={t.name}
+              delay={i * 90}
+              className="card-soft card-lift flex h-full flex-col p-7"
+            >
               <Stars className="h-4 w-4" />
               <blockquote className="mt-4 flex-1 text-[1rem] leading-[1.7] text-slate">
                 “{t.quote}”
@@ -311,7 +324,7 @@ export function Testimonials() {
                 <p className="font-semibold text-ink">{t.name}</p>
                 <p className="text-sm text-slate">{t.role}</p>
               </figcaption>
-            </figure>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -334,14 +347,14 @@ export function WhyUs() {
           Why patients choose Oro
         </h2>
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {reasons.map((r) => (
-            <div key={r.title} className="card-soft card-lift p-7">
-              <span className="grid h-12 w-12 place-items-center rounded-2xl bg-brand-light text-brand">
+          {reasons.map((r, i) => (
+            <Reveal key={r.title} delay={i * 90} className="card-soft card-lift p-7">
+              <span className="icon-anim grid h-12 w-12 place-items-center rounded-2xl bg-brand-light text-brand">
                 <r.icon className="h-6 w-6" />
               </span>
               <h3 className="mt-5 text-lg font-semibold text-ink">{r.title}</h3>
               <p className="mt-2 text-[0.95rem] leading-relaxed text-slate">{r.text}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
@@ -370,7 +383,7 @@ export function Contact() {
         </div>
 
         <div className="mt-12 grid gap-8 lg:grid-cols-2">
-          <div className="space-y-6">
+          <Reveal className="space-y-6">
             <div className="card-soft p-7">
               <h3 className="text-lg font-semibold text-ink">Visit us</h3>
               <p className="mt-3 flex gap-3 text-[0.98rem] leading-relaxed text-slate">
@@ -424,9 +437,11 @@ export function Contact() {
                 style={{ border: 0 }}
               />
             </div>
-          </div>
+          </Reveal>
 
-          <form
+          <Reveal
+            delay={140}
+            as="form"
             className="card-soft h-fit p-7"
             onSubmit={(e) => {
               e.preventDefault();
@@ -508,7 +523,7 @@ export function Contact() {
                 </p>
               )}
             </div>
-          </form>
+          </Reveal>
         </div>
       </div>
     </section>
