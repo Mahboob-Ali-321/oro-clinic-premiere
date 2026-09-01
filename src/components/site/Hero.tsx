@@ -12,15 +12,18 @@ export function Hero() {
         />
       </div>
       <div
-        className="absolute inset-0 -z-10"
+        className="absolute inset-0 -z-10 hidden md:block"
         style={{
           background:
-            "linear-gradient(90deg, rgba(240,248,255,1) 0%, rgba(240,248,255,0.85) 40%, rgba(240,248,255,0) 100%)",
+            "linear-gradient(90deg, rgba(248,250,252,0.93) 0%, rgba(248,250,252,0.65) 28%, rgba(248,250,252,0.15) 48%, rgba(248,250,252,0) 55%)",
         }}
       />
       <div
         className="absolute inset-0 -z-10 md:hidden"
-        style={{ background: "rgba(240,248,255,0.72)" }}
+        style={{
+          background:
+            "linear-gradient(155deg, rgba(248,250,252,0.96) 0%, rgba(248,250,252,0.85) 25%, rgba(248,250,252,0.55) 50%, rgba(248,250,252,0.1) 75%)",
+        }}
       />
 
       <Navbar />
