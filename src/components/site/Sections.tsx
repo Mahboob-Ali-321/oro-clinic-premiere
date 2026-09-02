@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useServerFn } from "@tanstack/react-start";
+import { requestAppointment } from "@/lib/appointments.functions";
 import { Reveal } from "./Reveal";
 import {
   ArrowRight,
