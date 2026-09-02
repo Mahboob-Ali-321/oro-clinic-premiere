@@ -283,7 +283,52 @@ const testimonials = [
     name: "Ravi M.",
     role: "Long-term Patient",
   },
+  {
+    quote:
+      "Dr. Anand combines real expertise with genuine compassion. He sat with me, explained my treatment clearly and made sure every concern of mine was addressed before starting.",
+    name: "Meghna K.",
+    role: "General Dentistry Patient",
+  },
+  {
+    quote:
+      "Got both a root canal and a cleaning done. Everything was efficient and completely painless — the doctor is professional yet friendly, and walks you through each step.",
+    name: "MBBS Student",
+    role: "RCT & Cleaning Patient",
+  },
+  {
+    quote:
+      "I had my wisdom tooth removed here and my father got his implants done too. Both treatments went smoothly and we're both really happy with the results.",
+    name: "Neon Herbs",
+    role: "Wisdom Tooth Extraction",
+  },
+  {
+    quote:
+      "A big thank you to the doctor for the excellent orthodontic treatment — it has truly given me a beautiful smile I feel confident about.",
+    name: "Vidyanand K.",
+    role: "Orthodontic Patient",
+  },
+  {
+    quote:
+      "Had my root canal treatment done here. Very nice clinic — clean, well-managed and the treatment was comfortable throughout.",
+    name: "Prashant J.",
+    role: "Root Canal Patient",
+  },
 ];
+
+function TestimonialCard({ t }: { t: (typeof testimonials)[number] }) {
+  return (
+    <figure className="card-soft card-lift flex h-full w-[320px] shrink-0 flex-col p-7 sm:w-[380px]">
+      <Stars className="h-4 w-4" />
+      <blockquote className="mt-4 flex-1 text-[1rem] leading-[1.7] text-slate">
+        “{t.quote}”
+      </blockquote>
+      <figcaption className="mt-6 border-t border-black/5 pt-4">
+        <p className="font-semibold text-ink">{t.name}</p>
+        <p className="text-sm text-slate">{t.role}</p>
+      </figcaption>
+    </figure>
+  );
+}
 
 export function Testimonials() {
   return (
@@ -309,27 +354,15 @@ export function Testimonials() {
             </div>
           </div>
         </div>
+      </div>
 
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
-          {testimonials.map((t, i) => (
-            <Reveal
-              as="figure"
-              key={t.name}
-              delay={i * 90}
-              className="card-soft card-lift flex h-full flex-col p-7"
-            >
-              <Stars className="h-4 w-4" />
-              <blockquote className="mt-4 flex-1 text-[1rem] leading-[1.7] text-slate">
-                “{t.quote}”
-              </blockquote>
-              <figcaption className="mt-6 border-t border-black/5 pt-4">
-                <p className="font-semibold text-ink">{t.name}</p>
-                <p className="text-sm text-slate">{t.role}</p>
-              </figcaption>
-            </Reveal>
+      <Reveal className="marquee-pause mt-12 overflow-hidden">
+        <div className="marquee-track gap-5 pr-5">
+          {[...testimonials, ...testimonials].map((t, i) => (
+            <TestimonialCard key={`${t.name}-${i}`} t={t} />
           ))}
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }
