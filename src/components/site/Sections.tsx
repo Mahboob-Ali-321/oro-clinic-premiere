@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useServerFn } from "@tanstack/react-start";
+import { requestAppointment } from "@/lib/appointments.functions";
 import { Reveal } from "./Reveal";
 import {
   ArrowRight,
@@ -369,6 +371,34 @@ const hours = [
 
 export function Contact() {
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const submitAppointment = useServerFn(requestAppointment);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setSending(true);
+    setError(null);
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    try {
+      await submitAppointment({
+        data: {
+          name: String(fd.get("name") ?? ""),
+          phone: String(fd.get("phone") ?? ""),
+          service: String(fd.get("service") ?? ""),
+          preferred_date: String(fd.get("date") ?? ""),
+          message: String(fd.get("message") ?? ""),
+        },
+      });
+      form.reset();
+      setSent(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please call or WhatsApp us instead.");
+    } finally {
+      setSending(false);
+    }
+  }
 
   return (
     <section id="contact" className="section-pad bg-white">
@@ -443,10 +473,7 @@ export function Contact() {
             delay={140}
             as="form"
             className="card-soft h-fit p-7"
-            onSubmit={(e: React.FormEvent) => {
-              e.preventDefault();
-              setSent(true);
-            }}
+            onSubmit={handleSubmit}
           >
             <h3 className="text-lg font-semibold text-ink">Request an appointment</h3>
             <div className="mt-5 space-y-4">
@@ -513,11 +540,14 @@ export function Contact() {
                   className="mt-1.5 w-full rounded-xl border border-black/10 bg-surface px-4 py-3 text-[0.95rem] text-ink outline-none focus:border-brand"
                 />
               </div>
-              <button type="submit" className="btn-pill btn-brand w-full">
-                Request Appointment
+              <button type="submit" disabled={sending} className="btn-pill btn-brand w-full disabled:opacity-60">
+                {sending ? "Sending…" : "Request Appointment"}
                 <ArrowRight className="h-4 w-4" />
               </button>
-              {sent && (
+              {error && (
+                <p className="text-center text-sm font-medium text-red-600">{error}</p>
+              )}
+              {sent && !error && (
                 <p className="text-center text-sm font-medium text-brand">
                   Thanks! Please also call or WhatsApp us to confirm your slot.
                 </p>
