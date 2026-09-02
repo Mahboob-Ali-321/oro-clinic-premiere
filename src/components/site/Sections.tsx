@@ -54,7 +54,7 @@ function GoogleG({ className = "h-6 w-6" }: { className?: string }) {
 export function TrustBar() {
   return (
     <section className="border-y border-black/5 bg-white">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-6 px-5 py-8 md:grid-cols-[auto_1fr] md:px-8">
+      <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-5 px-5 py-7 md:grid-cols-[auto_1fr] md:gap-6 md:px-8 md:py-8">
         <Reveal delay={80} className="flex min-w-0 items-center gap-4">
           <GoogleG className="h-10 w-10 shrink-0" />
           <div className="min-w-0">
@@ -77,7 +77,7 @@ export function TrustBar() {
 export function About() {
   return (
     <section id="about" className="section-pad">
-      <div className="mx-auto grid max-w-7xl items-center gap-10 px-5 md:px-8 lg:grid-cols-2 lg:gap-16">
+      <div className="mx-auto grid max-w-7xl items-center gap-14 px-5 md:px-8 lg:grid-cols-2 lg:gap-16">
         <Reveal variant="scale" className="relative">
           <img
             src="/assets/c3.jpg"
@@ -85,16 +85,16 @@ export function About() {
             loading="lazy"
             className="aspect-4/5 w-full rounded-[1.75rem] object-cover shadow-[0_30px_60px_-40px_rgba(10,25,47,0.6)]"
           />
-          <div className="card-soft absolute -bottom-6 left-4 flex items-center gap-3 px-5 py-4 md:left-8">
+          <div className="card-soft absolute -bottom-5 left-3 flex items-center gap-2.5 px-4 py-3 sm:left-4 sm:gap-3 sm:px-5 sm:py-4 md:left-8">
             <Stars className="h-4 w-4" />
-            <span className="text-sm font-semibold text-ink">1,004 five-star reviews</span>
+            <span className="text-xs font-semibold text-ink sm:text-sm">1,004 five-star reviews</span>
           </div>
         </Reveal>
         <div>
           <Reveal as="span" className="inline-flex items-center gap-2 rounded-full bg-chip-bg px-4 py-2 text-[0.75rem] font-semibold uppercase tracking-[1px] text-chip-text">
             Meet the doctor
           </Reveal>
-          <h2 className="mt-5 text-3xl font-bold tracking-[-0.02em] text-ink md:text-[2.75rem] md:leading-[1.15]">
+          <h2 className="mt-5 text-[1.75rem] leading-tight font-bold tracking-[-0.02em] text-ink sm:text-3xl md:text-[2.75rem] md:leading-[1.15]">
             Dr. Anand Mohan
           </h2>
           <p className="mt-5 text-[1.05rem] leading-[1.7] text-slate">
@@ -108,11 +108,11 @@ export function About() {
             known for being genuinely painless, efficient and honest about what you actually need.
           </p>
           <div className="mt-8 grid grid-cols-2 gap-4 sm:max-w-md">
-            <Reveal delay={120} className="card-soft px-5 py-4">
+            <Reveal delay={120} className="card-soft px-4 py-4 sm:px-5">
               <p className="text-2xl font-bold text-ink">1,000+</p>
               <p className="mt-1 text-sm text-slate">Happy patients</p>
             </Reveal>
-            <Reveal delay={240} className="card-soft px-5 py-4">
+            <Reveal delay={240} className="card-soft px-4 py-4 sm:px-5">
               <p className="text-2xl font-bold text-ink">5.0 ★</p>
               <p className="mt-1 text-sm text-slate">Google rating</p>
             </Reveal>
@@ -164,7 +164,7 @@ export function Services() {
           <span className="inline-flex items-center gap-2 rounded-full bg-chip-bg px-4 py-2 text-[0.75rem] font-semibold uppercase tracking-[1px] text-chip-text">
             Our services
           </span>
-          <h2 className="mt-5 text-3xl font-bold tracking-[-0.02em] text-ink md:text-[2.75rem] md:leading-[1.15]">
+          <h2 className="mt-5 text-[1.75rem] leading-tight font-bold tracking-[-0.02em] text-ink sm:text-3xl md:text-[2.75rem] md:leading-[1.15]">
             Complete dental care under one roof
           </h2>
           <p className="mt-4 text-[1.05rem] leading-[1.7] text-slate">
@@ -178,7 +178,7 @@ export function Services() {
               as="article"
               key={s.title}
               delay={i * 90}
-              className="card-soft card-lift p-7"
+              className="card-soft card-lift p-6 sm:p-7"
             >
               <span className="icon-anim grid h-12 w-12 place-items-center rounded-2xl bg-brand-light text-brand">
                 <s.icon className="h-6 w-6" />
@@ -212,7 +212,7 @@ export function Gallery() {
           <span className="inline-flex items-center gap-2 rounded-full bg-chip-bg px-4 py-2 text-[0.75rem] font-semibold uppercase tracking-[1px] text-chip-text">
             Gallery
           </span>
-          <h2 className="mt-5 text-3xl font-bold tracking-[-0.02em] text-ink md:text-[2.75rem] md:leading-[1.15]">
+          <h2 className="mt-5 text-[1.75rem] leading-tight font-bold tracking-[-0.02em] text-ink sm:text-3xl md:text-[2.75rem] md:leading-[1.15]">
             Inside the clinic
           </h2>
         </div>
@@ -317,7 +317,7 @@ const testimonials = [
 
 function TestimonialCard({ t }: { t: (typeof testimonials)[number] }) {
   return (
-    <figure className="card-soft card-lift flex h-full w-[320px] shrink-0 flex-col p-7 sm:w-[380px]">
+    <figure className="card-soft card-lift flex h-full w-[268px] shrink-0 flex-col p-6 sm:w-[380px] sm:p-7">
       <Stars className="h-4 w-4" />
       <blockquote className="mt-4 flex-1 text-[1rem] leading-[1.7] text-slate">
         “{t.quote}”
@@ -339,12 +339,12 @@ export function Testimonials() {
             <span className="inline-flex items-center gap-2 rounded-full bg-chip-bg px-4 py-2 text-[0.75rem] font-semibold uppercase tracking-[1px] text-chip-text">
               Patient stories
             </span>
-            <h2 className="mt-5 text-3xl font-bold tracking-[-0.02em] text-ink md:text-[2.75rem] md:leading-[1.15]">
+            <h2 className="mt-5 text-[1.75rem] leading-tight font-bold tracking-[-0.02em] text-ink sm:text-3xl md:text-[2.75rem] md:leading-[1.15]">
               What our patients say
             </h2>
           </div>
-          <div className="flex items-center gap-3">
-            <GoogleG className="h-8 w-8" />
+          <div className="flex shrink-0 items-center gap-3">
+            <GoogleG className="h-8 w-8 shrink-0" />
             <div>
               <div className="flex items-center gap-2">
                 <span className="text-2xl font-bold text-ink">5.0</span>
@@ -378,12 +378,12 @@ export function WhyUs() {
   return (
     <section className="section-pad">
       <div className="mx-auto max-w-7xl px-5 md:px-8">
-        <h2 className="max-w-2xl text-3xl font-bold tracking-[-0.02em] text-ink md:text-[2.75rem] md:leading-[1.15]">
+        <h2 className="max-w-2xl text-[1.75rem] leading-tight font-bold tracking-[-0.02em] text-ink sm:text-3xl md:text-[2.75rem] md:leading-[1.15]">
           Why patients choose Oro
         </h2>
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {reasons.map((r, i) => (
-            <Reveal key={r.title} delay={i * 90} className="card-soft card-lift p-7">
+            <Reveal key={r.title} delay={i * 90} className="card-soft card-lift p-6 sm:p-7">
               <span className="icon-anim grid h-12 w-12 place-items-center rounded-2xl bg-brand-light text-brand">
                 <r.icon className="h-6 w-6" />
               </span>
@@ -440,14 +440,14 @@ export function Contact() {
           <span className="inline-flex items-center gap-2 rounded-full bg-chip-bg px-4 py-2 text-[0.75rem] font-semibold uppercase tracking-[1px] text-chip-text">
             Contact & booking
           </span>
-          <h2 className="mt-5 text-3xl font-bold tracking-[-0.02em] text-ink md:text-[2.75rem] md:leading-[1.15]">
+          <h2 className="mt-5 text-[1.75rem] leading-tight font-bold tracking-[-0.02em] text-ink sm:text-3xl md:text-[2.75rem] md:leading-[1.15]">
             Book your appointment
           </h2>
         </div>
 
         <div className="mt-12 grid gap-8 lg:grid-cols-2">
           <Reveal className="space-y-6">
-            <div className="card-soft p-7">
+            <div className="card-soft p-6 sm:p-7">
               <h3 className="text-lg font-semibold text-ink">Visit us</h3>
               <p className="mt-3 flex gap-3 text-[0.98rem] leading-relaxed text-slate">
                 <MapPin className="mt-0.5 h-5 w-5 shrink-0 text-brand" />
@@ -455,7 +455,7 @@ export function Contact() {
                 Sabour Rd, Bhagalpur, Bihar 812001
               </p>
               <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                <a href="tel:+919616984243" className="btn-pill btn-brand">
+                <a href="tel:+919616984243" className="btn-pill btn-brand w-full sm:w-auto">
                   <Phone className="h-4 w-4" />
                   +91 96169 84243
                 </a>
@@ -463,7 +463,7 @@ export function Contact() {
                   href={WHATSAPP}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-pill btn-glass"
+                  className="btn-pill btn-glass w-full sm:w-auto"
                 >
                   <MessageCircle className="h-4 w-4" />
                   WhatsApp
@@ -471,7 +471,7 @@ export function Contact() {
               </div>
             </div>
 
-            <div className="card-soft p-7">
+            <div className="card-soft p-6 sm:p-7">
               <h3 className="flex items-center gap-2 text-lg font-semibold text-ink">
                 <Clock className="h-5 w-5 text-brand" />
                 Clinic hours
@@ -480,10 +480,10 @@ export function Contact() {
                 {hours.map((h) => (
                   <div
                     key={h.day}
-                    className="grid grid-cols-[minmax(0,1fr)_auto] gap-3 border-b border-black/5 pb-3 last:border-0 last:pb-0"
+                    className="grid gap-1 border-b border-black/5 pb-3 last:border-0 last:pb-0 sm:grid-cols-[minmax(0,1fr)_auto] sm:gap-3"
                   >
                     <dt className="text-[0.95rem] font-medium text-ink">{h.day}</dt>
-                    <dd className="text-right text-[0.9rem] text-slate">{h.time}</dd>
+                    <dd className="text-[0.9rem] text-slate sm:text-right">{h.time}</dd>
                   </div>
                 ))}
               </dl>
@@ -494,7 +494,7 @@ export function Contact() {
                 title="Map to Oro Dental Clinic, Bhagalpur"
                 src="https://www.google.com/maps?q=Oro%20Dental%20Clinic%2C%20Tilkamanjhi%20Chowk%2C%20Jail%20Road%2C%20Sabour%20Rd%2C%20Bhagalpur%2C%20Bihar%20812001&output=embed"
                 width="100%"
-                height="300"
+                height="260"
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 style={{ border: 0 }}
@@ -505,7 +505,7 @@ export function Contact() {
           <Reveal
             delay={140}
             as="form"
-            className="card-soft h-fit p-7"
+            className="card-soft h-fit p-6 sm:p-7"
             onSubmit={handleSubmit}
           >
             <h3 className="text-lg font-semibold text-ink">Request an appointment</h3>
@@ -627,7 +627,7 @@ export function Footer() {
           <a href="tel:+919616984243" className="mt-3 block text-sm hover:text-white">
             +91 96169 84243
           </a>
-          <a href="#contact" className="btn-pill btn-brand mt-5">
+          <a href="#contact" className="btn-pill btn-brand mt-5 w-full sm:w-auto">
             Book Appointment
             <ArrowRight className="h-4 w-4" />
           </a>
