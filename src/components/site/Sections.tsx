@@ -473,10 +473,7 @@ export function Contact() {
             delay={140}
             as="form"
             className="card-soft h-fit p-7"
-            onSubmit={(e: React.FormEvent) => {
-              e.preventDefault();
-              setSent(true);
-            }}
+            onSubmit={handleSubmit}
           >
             <h3 className="text-lg font-semibold text-ink">Request an appointment</h3>
             <div className="mt-5 space-y-4">
