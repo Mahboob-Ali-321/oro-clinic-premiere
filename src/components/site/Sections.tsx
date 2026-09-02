@@ -540,11 +540,14 @@ export function Contact() {
                   className="mt-1.5 w-full rounded-xl border border-black/10 bg-surface px-4 py-3 text-[0.95rem] text-ink outline-none focus:border-brand"
                 />
               </div>
-              <button type="submit" className="btn-pill btn-brand w-full">
-                Request Appointment
+              <button type="submit" disabled={sending} className="btn-pill btn-brand w-full disabled:opacity-60">
+                {sending ? "Sending…" : "Request Appointment"}
                 <ArrowRight className="h-4 w-4" />
               </button>
-              {sent && (
+              {error && (
+                <p className="text-center text-sm font-medium text-red-600">{error}</p>
+              )}
+              {sent && !error && (
                 <p className="text-center text-sm font-medium text-brand">
                   Thanks! Please also call or WhatsApp us to confirm your slot.
                 </p>
