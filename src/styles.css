@@ -275,6 +275,17 @@
   animation: heroReveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+@utility marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 55s linear infinite;
+}
+
 @layer utilities {
   .reveal,
   .reveal-scale {
