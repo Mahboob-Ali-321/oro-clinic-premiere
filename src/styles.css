@@ -313,7 +313,19 @@
   }
 }
 
+.marquee-pause:hover .marquee-track,
+.marquee-pause:active .marquee-track {
+  animation-play-state: paused;
+}
+
+@media (max-width: 640px) {
+  .marquee-track {
+    animation-duration: 80s;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .marquee-track { animation: none !important; }
   .animate-rise,
   .animate-kenburns,
   .animate-hero-reveal {
