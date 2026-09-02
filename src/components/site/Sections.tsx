@@ -371,6 +371,34 @@ const hours = [
 
 export function Contact() {
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const submitAppointment = useServerFn(requestAppointment);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setSending(true);
+    setError(null);
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    try {
+      await submitAppointment({
+        data: {
+          name: String(fd.get("name") ?? ""),
+          phone: String(fd.get("phone") ?? ""),
+          service: String(fd.get("service") ?? ""),
+          preferred_date: String(fd.get("date") ?? ""),
+          message: String(fd.get("message") ?? ""),
+        },
+      });
+      form.reset();
+      setSent(true);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Something went wrong. Please call or WhatsApp us instead.");
+    } finally {
+      setSending(false);
+    }
+  }
 
   return (
     <section id="contact" className="section-pad bg-white">
