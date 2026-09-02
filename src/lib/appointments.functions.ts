@@ -22,7 +22,7 @@ const appointmentSchema = z.object({
 export const requestAppointment = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => appointmentSchema.parse(input))
   .handler(async ({ data }) => {
-    const supabase = createClient<Database>(
+    const supabase = createClient(
       process.env["SUPABASE_URL"]!,
       process.env["SUPABASE_PUBLISHABLE_KEY"]!,
       { auth: { persistSession: false } }
