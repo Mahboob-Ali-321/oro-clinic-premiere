@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Hero } from "@/components/site/Hero";
+import { BookingModal } from "@/components/site/BookingModal";
 import {
   About,
   Contact,
@@ -56,16 +57,19 @@ export const Route = createFileRoute("/")({
 
 function Index() {
   return (
-    <main>
-      <Hero />
-      <TrustBar />
-      <About />
-      <Services />
-      <Gallery />
-      <Testimonials />
-      <WhyUs />
-      <Contact />
-      <Footer />
-    </main>
+    <>
+      <main>
+        <Hero />
+        <TrustBar />
+        <About />
+        <Services />
+        <Gallery />
+        <Testimonials />
+        <WhyUs />
+        <Contact />
+        <Footer />
+      </main>
+      <BookingModal />
+    </>
   );
 }
