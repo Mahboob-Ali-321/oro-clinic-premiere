@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { requestAppointment } from "@/lib/appointments.functions";
 import { Reveal } from "./Reveal";
+import { CountUp } from "./CountUp";
 import {
   ArrowRight,
   Baby,
@@ -108,12 +109,16 @@ export function About() {
             known for being genuinely painless, efficient and honest about what you actually need.
           </p>
           <div className="mt-8 grid grid-cols-2 gap-4 sm:max-w-md">
-            <Reveal delay={120} className="card-soft px-4 py-4 sm:px-5">
-              <p className="text-2xl font-bold text-ink">1,000+</p>
+            <Reveal variant="scale" delay={120} className="card-soft px-4 py-4 sm:px-5">
+              <p className="text-2xl font-bold text-ink">
+                <CountUp end={1000} suffix="+" />
+              </p>
               <p className="mt-1 text-sm text-slate">Happy patients</p>
             </Reveal>
-            <Reveal delay={240} className="card-soft px-4 py-4 sm:px-5">
-              <p className="text-2xl font-bold text-ink">5.0 ★</p>
+            <Reveal variant="scale" delay={240} className="card-soft px-4 py-4 sm:px-5">
+              <p className="text-2xl font-bold text-ink">
+                <CountUp end={5} decimals={1} suffix=" ★" />
+              </p>
               <p className="mt-1 text-sm text-slate">Google rating</p>
             </Reveal>
           </div>

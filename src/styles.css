@@ -296,7 +296,7 @@
     will-change: opacity, transform;
   }
   .reveal { transform: translateY(20px); }
-  .reveal-scale { transform: scale(0.97); }
+  .reveal-scale { transform: scale(0.95); }
   .reveal.is-revealed,
   .reveal-scale.is-revealed {
     opacity: 1;
