@@ -25,13 +25,13 @@ export function Navbar() {
 
   return (
     <header className="absolute inset-x-0 top-0 z-50">
-      <nav className="animate-rise mx-auto flex max-w-7xl items-center justify-between gap-4 px-5 py-5 md:px-8" style={{ animationDelay: "0.05s" }}>
+      <nav className="animate-rise mx-auto flex max-w-7xl items-center justify-between gap-3 px-5 py-4 md:px-8 md:py-5" style={{ animationDelay: "0.05s" }}>
         <a href="#top" className="flex min-w-0 items-center gap-2.5">
-          <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-brand-light text-brand">
+          <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-brand-light text-brand sm:h-10 sm:w-10">
             <ToothIcon className="h-6 w-6" />
           </span>
           <span className="min-w-0 leading-none">
-            <span className="block text-2xl font-bold tracking-tight text-ink">Oro</span>
+            <span className="block text-xl font-bold tracking-tight text-ink sm:text-2xl">Oro</span>
             <span className="mt-1 block text-[0.65rem] font-medium uppercase tracking-[2px] text-slate">
               Dental Clinic
             </span>
@@ -60,7 +60,7 @@ export function Navbar() {
             type="button"
             aria-label={open ? "Close menu" : "Open menu"}
             onClick={() => setOpen((v) => !v)}
-            className="btn-pill btn-glass h-12 w-12 !p-0 lg:hidden"
+            className="btn-pill btn-glass h-11 w-11 shrink-0 !p-0 lg:hidden"
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>

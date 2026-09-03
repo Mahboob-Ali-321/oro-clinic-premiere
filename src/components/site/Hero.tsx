@@ -29,7 +29,7 @@ export function Hero() {
   }, []);
 
   return (
-    <section id="top" className="relative isolate min-h-[92vh] overflow-hidden bg-surface">
+    <section id="top" className="relative isolate min-h-[88vh] overflow-hidden bg-surface md:min-h-[92vh]">
       <div ref={bgRef} className="absolute inset-0 -z-20 overflow-hidden will-change-transform">
         <div className="animate-hero-reveal h-full w-full">
           <img
@@ -57,10 +57,10 @@ export function Hero() {
 
       <Navbar />
 
-      <div className="mx-auto flex min-h-[92vh] max-w-7xl items-center px-8 pt-32 pb-20 md:px-8">
+      <div className="mx-auto flex min-h-[88vh] max-w-7xl items-center px-5 pt-28 pb-16 md:min-h-[92vh] md:px-8 md:pt-32 md:pb-20">
         <div className="max-w-[800px]">
           <span
-            className="animate-rise inline-flex items-center gap-2 rounded-full bg-chip-bg px-4 py-2 text-[0.75rem] font-semibold uppercase tracking-[1px] text-chip-text"
+            className="animate-rise inline-flex items-center gap-2 rounded-full bg-chip-bg px-4 py-2 text-[0.7rem] font-semibold uppercase tracking-[1px] text-chip-text sm:text-[0.75rem]"
             style={{ animationDelay: "0.25s" }}
           >
             <span className="h-1.5 w-1.5 rounded-full bg-brand" />
@@ -68,7 +68,7 @@ export function Hero() {
           </span>
 
           <h1
-            className="animate-rise mt-6 text-[2.5rem] font-bold leading-[1.1] tracking-[-0.02em] text-ink md:text-[3.5rem] lg:text-[4.5rem]"
+            className="animate-rise mt-6 text-[2rem] font-bold leading-[1.12] tracking-[-0.02em] text-ink sm:text-[2.5rem] md:text-[3.5rem] lg:text-[4.5rem]"
             style={{ animationDelay: "0.38s" }}
           >
             Healthy smiles.
@@ -77,7 +77,7 @@ export function Hero() {
           </h1>
 
           <p
-            className="animate-rise mt-6 max-w-xl text-[1.15rem] font-normal leading-[1.6] text-slate"
+            className="animate-rise mt-5 max-w-xl text-[1rem] font-normal leading-[1.6] text-slate sm:mt-6 sm:text-[1.15rem]"
             style={{ animationDelay: "0.5s" }}
           >
             Oro Dental Clinic provides compassionate, high-quality dental care in Bhagalpur —
@@ -88,11 +88,11 @@ export function Hero() {
             className="animate-rise mt-8 flex flex-col gap-3 sm:flex-row sm:items-center"
             style={{ animationDelay: "0.62s" }}
           >
-            <a href="#contact" className="btn-pill btn-brand">
+            <a href="#contact" className="btn-pill btn-brand w-full sm:w-auto">
               Book Appointment
               <ArrowRight className="h-4 w-4" />
             </a>
-            <a href="tel:+919616984243" className="btn-pill btn-glass">
+            <a href="tel:+919616984243" className="btn-pill btn-glass w-full sm:w-auto">
               <Phone className="h-4 w-4" />
               Call Now
             </a>
